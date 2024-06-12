@@ -4,6 +4,7 @@ class WebNode:
     def __init__(self, aUrl: str) -> None:
         self.url = aUrl
         self.images = []
+        self.altTexts = []
         self.links = []
         self.children = []
         self.childIndex = 0
@@ -18,6 +19,12 @@ class WebNode:
         "Add the URL of an image."
 
         self.images.append(aUrl)
+
+    def setAltTexts(self, altTexts: list) -> None:
+        self.altTexts = altTexts
+
+    def addAltText(self, altText: str) -> None:
+        self.altTexts.append(altText)
 
     def addLink(self, aUrl: str):
         self.links.append(aUrl)
