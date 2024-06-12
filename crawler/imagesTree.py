@@ -1,7 +1,7 @@
 # a tree filled with images
 
-import imageCrawler
-import webNode
+import crawler.imageCrawler as imageCrawler
+import crawler.webNode as webNode
 
 
 class ImagesTree:
