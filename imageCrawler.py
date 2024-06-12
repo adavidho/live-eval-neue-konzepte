@@ -41,7 +41,7 @@ def parse(url, verbose=False):
                 imagesFound.append(src)
 
             if "alt" in image.attrs:
-                alt = image["src"]
+                alt = image["alt"]
                 if verbose:
                     print("image alt", alt)
                 altTextsFound.append(alt)
