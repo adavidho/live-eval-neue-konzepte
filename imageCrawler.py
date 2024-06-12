@@ -7,8 +7,9 @@ from bs4 import BeautifulSoup
 # just for testing, for standard use, use method crawl
 def parse(url, verbose=False):
     imagesFound = []
+    altTextsFound = []
     urlsFound = []
-    # if True:
+    
     try:
         webUrl = urllib.request.urlopen(url)
         data = webUrl.read()
@@ -22,13 +23,14 @@ def parse(url, verbose=False):
                 href = link["href"]
                 if verbose:
                     print("link", href)
-                if href.startswith("/"):  # relative link detected
+                if href.startswith("/"): # relative link detected
                     href = url + href  # add prefix
                 urlsFound.append(href)
 
         images = parser.find_all("img")
         if verbose:
             print("number images", len(images))
+
         for image in images:
 
             if "src" in image.attrs:
@@ -38,6 +40,12 @@ def parse(url, verbose=False):
                     print("image src", src)
                 imagesFound.append(src)
 
+            if "alt" in image.attrs:
+                alt = image["src"]
+                if verbose:
+                    print("image alt", alt)
+                altTextsFound.append(alt)
+
     except Exception as e:
         print("error during parsing", e)
-    return imagesFound, urlsFound
+    return imagesFound, urlsFound, altTextsFound

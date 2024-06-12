@@ -7,7 +7,7 @@ import webNode
 class ImagesTree:
 
     # start here to crawl images
-    def __init__(self, url, aExcludeList=[]):
+    def __init__(self, url: str, aExcludeList: list = []):
         self.root = webNode.WebNode(url)
         self.unexpandedNodes = []
         self.visitedUrlsHash = []
@@ -26,9 +26,10 @@ class ImagesTree:
             if urlHash not in self.visitedUrlsHash:
                 self.visitedUrlsHash.append(urlHash)
                 print("crawl", url)
-                images, links = imageCrawler.parse(next.getUrl(), verbose=False)
+                images, links, altTexts = imageCrawler.parse(next.getUrl(), verbose=False)
                 next.setImages(images)
                 next.setLinks(links)
+                next.setAltTexts(altTexts)
                 # add children, add to expand list
                 for link in links:
                     if link not in self.excludeList:
