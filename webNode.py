@@ -1,23 +1,25 @@
 # represents a node in a tree
 # children are other WebNodes
 class WebNode:
-    def __init__(self, aUrl):
+    def __init__(self, aUrl: str) -> None:
         self.url = aUrl
         self.images = []
         self.links = []
         self.children = []
         self.childIndex = 0
 
-    def setImages(self, aImages):
+    def setImages(self, aImages: list):
         self.images = aImages
 
-    def setLinks(self, aLinks):
+    def setLinks(self, aLinks: list):
         self.links = aLinks
 
-    def addImage(self, aUrl):
+    def addImage(self, aUrl: str):
+        "Add the URL of an image."
+
         self.images.append(aUrl)
 
-    def addLink(self, aUrl):
+    def addLink(self, aUrl: str):
         self.links.append(aUrl)
 
     def addChild(self, aWebNode):
@@ -31,9 +33,6 @@ class WebNode:
 
     def childs(self):
         return self.children
-
-    def hasChildren(self):
-        return len(self.children) != 0
 
     def next(self):
         if self.childIndex < len(self.children):

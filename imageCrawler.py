@@ -36,8 +36,7 @@ def parse(url, verbose=False):
 
                 if verbose:
                     print("image src", src)
-                if src != None:
-                    imagesFound.append(src)
+                imagesFound.append(src)
 
     except Exception as e:
         print("error during parsing", e)
